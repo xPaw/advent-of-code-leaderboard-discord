@@ -19,6 +19,8 @@ function validateEnvVariables() {
     }
     if (!process.env.AOC_COOKIE) {
         errors.push('-AOC_COOKIE')
+    } else if (!process.env.AOC_COOKIE.startsWith('session=')) {
+        errors.push('-AOC_COOKIE should start with session=')
     }
     if (!process.env.TEAMS_WEBHOOK && !process.env.DISCORD_WEBHOOK) {
         errors.push('-TEAMS_WEBHOOK or -DISCORD_WEBHOOK')
