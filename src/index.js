@@ -31,7 +31,9 @@ function validateEnvVariables() {
 }
 
 async function requestJsonLeaderboard() {
-    const request = await fetch(`https://adventofcode.com/${EVENT_YEAR}/leaderboard/private/view/${process.env.AOC_LEADERBOARD_ID}.json`, {headers: {cookie: process.env.AOC_COOKIE}});
+    const url = `https://adventofcode.com/${EVENT_YEAR}/leaderboard/private/view/${process.env.AOC_LEADERBOARD_ID}.json`;
+    console.debug('Requesting', url);
+    const request = await fetch(url, {headers: {cookie: process.env.AOC_COOKIE}});
     const jsonLeaderboard = await request.json();
     return jsonLeaderboard;
 }
